@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Viewer,
   Cartesian3,
@@ -9,11 +9,11 @@ import {
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { regions } from "../utils/const";
 
-export const CesiumMap: React.FC = () => {
+export function CesiumMap() {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
   const [viewer, setViewer] = useState<Viewer | null>(null);
 
-  
+
 
   useEffect(() => {
     if (!cesiumContainerRef.current) return;
@@ -87,6 +87,6 @@ export const CesiumMap: React.FC = () => {
       <div ref={cesiumContainerRef} style={{ width: "100%", height: "90vh" }} />
     </>
   );
-};
+}
 
 // export default CesiumMap;

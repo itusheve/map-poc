@@ -7,7 +7,7 @@ import {
   GeoJsonDataSource,
 } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import { regions } from "../utils/const";
+import { REGIONS_ARRAY } from "../utils/const";
 
 export function CesiumMap() {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
@@ -61,11 +61,11 @@ export function CesiumMap() {
     };
   }, []);
 
-  const flyToRegion = (regionKey: keyof typeof regions) => {
+  const flyToRegion = (index: number) => {
     if (viewer) {
-      const { longitude, latitude, altitude } = regions[regionKey];
+      const region = REGIONS_ARRAY[index];
       viewer.camera.flyTo({
-        destination: Cartesian3.fromDegrees(longitude, latitude, altitude),
+        destination: Cartesian3.fromDegrees(region.longitude, region.latitude, region.altitude),
         duration: 2.0,
       });
     }
@@ -75,16 +75,14 @@ export function CesiumMap() {
     <>
       <div>
         <select
-          onChange={(e) => flyToRegion(e.target.value as keyof typeof regions)}
+          onChange={(e) => flyToRegion(parseInt(e.target.value))}
         >
-          <option value="">Select Region</option>
-          <option value="north">North of Israel</option>
-          <option value="south">South of Israel</option>
-          <option value="east">East of Israel</option>
-          <option value="west">West of Israel</option>
+          {REGIONS_ARRAY.map((region, index) => <option key={region.key} value={index}>{region.key}</option>)}
         </select>
       </div>
-      <div ref={cesiumContainerRef} style={{ width: "100%", height: "90vh" }} />
+      <div>
+        <div ref={cesiumContainerRef} style={{ width: "100%", height: "90vh" }} />
+      </div>
     </>
   );
 }

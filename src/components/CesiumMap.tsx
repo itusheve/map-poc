@@ -10,7 +10,7 @@ import "cesium/Build/Cesium/Widgets/widgets.css";
 
 const CesiumMap: React.FC = () => {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
-  const [viewer, setViewer] = useState<typeof Viewer | null>(null);
+  const [viewer, setViewer] = useState<Viewer | null>(null);
 
   const regions = {
     north: {

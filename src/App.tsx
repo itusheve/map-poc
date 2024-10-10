@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import CesiumMap from './components/CesiumMap';
+import {CesiumMap} from './components/CesiumMap';
 import './App.css'
 
 const App: React.FC = () => {

@@ -9,7 +9,7 @@ import {
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { regions } from "../utils/const";
 
-const CesiumMap: React.FC = () => {
+export const CesiumMap: React.FC = () => {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
   const [viewer, setViewer] = useState<Viewer | null>(null);
 
@@ -89,4 +89,4 @@ const CesiumMap: React.FC = () => {
   );
 };
 
-export default CesiumMap;
+// export default CesiumMap;

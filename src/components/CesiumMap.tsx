@@ -73,7 +73,8 @@ export function CesiumMap() {
 
   return (
     <>
-      <div>
+      <div className="bg-slate-400">
+        
         <select
           onChange={(e) => flyToRegion(parseInt(e.target.value))}
         >
@@ -81,7 +82,7 @@ export function CesiumMap() {
         </select>
       </div>
       <div>
-        <div ref={cesiumContainerRef} style={{ width: "100%", height: "90vh" }} />
+        <div ref={cesiumContainerRef} style={{ width: "100%", height: "90vh" }}  />
       </div>
     </>
   );

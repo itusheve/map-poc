@@ -73,18 +73,29 @@ export function CesiumMap() {
 
   return (
     <>        
-        {/* <select
-          onChange={(e) => flyToRegion(parseInt(e.target.value))}
-        >
-          {REGIONS_ARRAY.map((region, index) => <option key={region.key} value={index}>{region.key}</option>)}
-        </select> */}
-      <div>
+        
+      <div className=" relative ">
         <div ref={cesiumContainerRef} className="w-[100dvw] h-[100dvh]"  />
+        <div className=" absolute top-12 right-2">
+          
+        </div>
       </div>
     </>
   );
 }
 
 // export default CesiumMap;
-// export function
+export function TopRightActionRow() {
+  return <div className="flex gap-2">
+    <select
+        onChange={(e) => {
+          // TODO: fly to region
+          console.log(e.target.value);
+        }}
+      >
+        {REGIONS_ARRAY.map((region, index) => <option key={region.key} value={index}>{region.key}</option>)}
+      </select>
+      
+  </div>
+}
 

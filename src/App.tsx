@@ -1,9 +1,10 @@
 import {CesiumMap} from './Pages/Home/CesiumMap';
 import './App.css'
 import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from './utils/queryClient';
+import { HydrateAtoms, queryClient } from './utils/queryClient';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Test } from './components/test';
+import { Provider } from 'jotai/react'
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -20,8 +21,13 @@ const App: React.FC = () => {
   ]);
 
   return (
-    <QueryClientProvider client={queryClient}>  
-        <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}> 
+       <Provider>
+        <HydrateAtoms >
+
+          <RouterProvider router={router} />
+        </HydrateAtoms>
+       </Provider>
     </QueryClientProvider>
 
   );

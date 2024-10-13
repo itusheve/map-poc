@@ -15,7 +15,7 @@
 - **Logic Duplication:** Do not replicate logic using copy-paste; create distinct hooks as needed.
 - **Array Operations:** Only use `array.map()` if generating a new array.
 - **Exports:** Favor named exports (`export`) over default exports (`export default`).
-- **Assistance:** If stuck on a task for over an hour longer than anticipated, contact Shaked first, followed by Yoni.
+- **Assistance:** If stuck on a task for over an hour longer than anticipated, contact Shaked first, .
 - **Types Organization:** If there are numerous type definitions, organize them in a dedicated folder.
   
 ### Props Restrictions
@@ -30,10 +30,9 @@
 ### Named conventions
 #### variable
 * use state variables will start be camelCase ``` const [isOpen, setIsOpen] = useState(true) ```
-* atoms will be CamelCase in declaration for example in the ``` state.ts ``` file ``` export const taskManagementNetworkAtom = atom<TaskManagementNetworkResponseArrayType>([]); ```
+* atoms will be CamelCase in declaration for example in the ``` state.ts ``` file ``` export const TaskManagementNetworkAtom = atom<TaskManagementNetworkResponseArrayType>([]); ```
 * when using the value you only use the useAtom when you need both the setter and getter of the atom.
 * when using the atom have to be snack_based_named ``` const set_task_management_network = useSetAtom(taskManagementNetworkAtom); ``` 
-* when using useSignal hook names use the camelCase ``` isOpen = useSignal(false) ``` 
 
 * not using margin without telling shaked
 * always add translation to the text

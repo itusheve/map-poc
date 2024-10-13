@@ -48,3 +48,49 @@ export const REGIONS_ARRAY = [
         altitude: 100000,
     }
 ] as const;
+
+
+export const FILTER_LIST = [
+  {
+      key: 'threats',
+      value: 'Threats'
+  },
+  {
+      key: 'sense',
+      value: 'sense'
+  },
+  {
+      key: 'Interruption reports',
+      value: 'Interruption reports'
+  },
+  {
+      key: 'North Region',
+      value: 'North Region'
+  },
+  {
+      key: 'South Region',
+      value: 'South Region'
+  },
+  {
+      key: 'West Region',
+      value: 'West Region'
+  },
+  {
+      key: 'East Region',
+      value: 'East Region'
+  },
+
+  {
+      key: 'Jerusalem Region',
+      value: 'Jerusalem Region'
+  },
+  {
+      key: 'Tel Aviv Region',
+      value: 'Tel Aviv Region'
+  },
+  {
+      key: 'Haifa Region',
+      value: 'Haifa Region'
+  },
+
+] as const;

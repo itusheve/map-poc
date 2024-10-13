@@ -7,7 +7,7 @@ import { Test } from './components/test';
 import { Provider } from 'jotai/react'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
-const App: React.FC = () => {
+function App() {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -22,17 +22,17 @@ const App: React.FC = () => {
   ]);
 
   return (
-    <QueryClientProvider client={queryClient}> 
-       <Provider>
-        <HydrateAtoms >
+    <QueryClientProvider client={queryClient}>
+      <Provider>
+        <HydrateAtoms>
 
           <RouterProvider router={router} />
         </HydrateAtoms>
-       </Provider>
-       <ReactQueryDevtools/>
+      </Provider>
+      <ReactQueryDevtools />
     </QueryClientProvider>
 
   );
-};
+}
 
 export default App

@@ -8,6 +8,7 @@ import {
 } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { REGIONS_ARRAY } from "../utils/const";
+import { TopRightActionRow } from "./TopRightActionRow";
 
 export function CesiumMap() {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
@@ -72,30 +73,15 @@ export function CesiumMap() {
   };
 
   return (
-    <>        
-        
+    <>
+
       <div className=" relative ">
-        <div ref={cesiumContainerRef} className="w-[100dvw] h-[100dvh]"  />
+        <div ref={cesiumContainerRef} className="w-[100dvw] h-[100dvh]" />
         <div className=" absolute top-12 right-2">
-          
+          <TopRightActionRow flyToRegion={flyToRegion} />
         </div>
       </div>
     </>
   );
-}
-
-// export default CesiumMap;
-export function TopRightActionRow() {
-  return <div className="flex gap-2">
-    <select
-        onChange={(e) => {
-          // TODO: fly to region
-          console.log(e.target.value);
-        }}
-      >
-        {REGIONS_ARRAY.map((region, index) => <option key={region.key} value={index}>{region.key}</option>)}
-      </select>
-      
-  </div>
 }
 

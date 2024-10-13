@@ -19,8 +19,21 @@ export function Test() {
 
     </div>
 }
+
+
+import { atom } from 'jotai'
+import { atomWithQuery } from 'jotai-tanstack-query' 
 import { useAtom } from 'jotai'
-import { idAtom, userAtom } from '../Pages/Home/HomeState'
+export const idAtom = atom<number>(1)
+export const userAtom = atomWithQuery((get) => ({
+    queryKey: ['users', get(idAtom)],
+    queryFn: async ({ queryKey: [, id] }) => {
+        const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+        return res.json()
+    },
+}))
+ 
+// import { idAtom, userAtom } from '../Pages/Home/HomeState'
 const UserData = () => {
     const [userQuery] = useAtom(userAtom)
     const [id_atom, set_id_atom] = useAtom(idAtom)

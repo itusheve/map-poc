@@ -9,6 +9,9 @@ import {
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import { REGIONS_ARRAY } from "../../utils/const";
 import { TopRightActionRow } from "../../components/TopRightActionRow";
+import { AlertSvg } from "../../components/Icons/Alert";
+import { RightArrowSvg } from "../../components/Icons/RightArrow";
+import { LeftArrowSvg } from "../../components/Icons/LeftArrow";
 
 export function CesiumMap() {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
@@ -80,8 +83,35 @@ export function CesiumMap() {
         <div className=" absolute top-12 right-2">
           <TopRightActionRow flyToRegion={flyToRegion} />
         </div>
+        <div className="absolute top-12 left-2">
+          <TopLeftAlertMenu />
+        </div>
       </div>
     </>
   );
+}
+
+export function TopLeftAlertMenu() {
+  const [isAlertOpen , setIsAlertOpen] = useState(false)
+  if (isAlertOpen) {
+    return <div className="flex gap-1 bg-black text-white">
+      list of alerts <button onClick={() => setIsAlertOpen(false)}>
+        <LeftArrowSvg />
+      </button>
+    </div>
+  }
+  return <div className=" flex flex-col gap-2">
+    <button className="flex gap-1 bg-black text-white items-center">
+      <AlertSvg className="flex flex-col justify-center" />
+      <div className="flex flex-col justify-center">
+        alert count = 12
+      </div>
+      <div className="flex flex-col justify-center">
+        <button onClick={() => setIsAlertOpen(true)}>
+          <RightArrowSvg  />
+        </button>
+      </div>
+    </button>
+  </div>
 }
 

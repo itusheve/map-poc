@@ -15,6 +15,22 @@ export function Test() {
                 bottom
             </div>
         </div>
+        <UserData />
 
     </div>
 }
+import { useAtom } from 'jotai'
+import { idAtom, userAtom } from '../Pages/Home/HomeState'
+const UserData = () => {
+    const [{ data, isPending, isError }] = useAtom(userAtom)
+    const [id_atom, set_id_atom] = useAtom(idAtom)
+    if (isPending) return <div>Loading...</div>
+    if (isError) return <div>Error</div>
+  
+    return <div>
+        <button onClick={() => {
+            set_id_atom(id_atom + 1)
+        }}>count</button>
+        <pre>{JSON.stringify(data, null , 2)}</pre>
+    </div>
+  }

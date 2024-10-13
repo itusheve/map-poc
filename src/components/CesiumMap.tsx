@@ -72,17 +72,14 @@ export function CesiumMap() {
   };
 
   return (
-    <>
-      <div className="bg-slate-400">
-        
-        <select
+    <>        
+        {/* <select
           onChange={(e) => flyToRegion(parseInt(e.target.value))}
         >
           {REGIONS_ARRAY.map((region, index) => <option key={region.key} value={index}>{region.key}</option>)}
-        </select>
-      </div>
+        </select> */}
       <div>
-        <div ref={cesiumContainerRef} style={{ width: "100%", height: "90vh" }}  />
+        <div ref={cesiumContainerRef} className="w-[100dvw] h-[100dvh]"  />
       </div>
     </>
   );

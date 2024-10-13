@@ -5,6 +5,7 @@ import { HydrateAtoms, queryClient } from './utils/queryClient';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Test } from './components/test';
 import { Provider } from 'jotai/react'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 const App: React.FC = () => {
   const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const App: React.FC = () => {
           <RouterProvider router={router} />
         </HydrateAtoms>
        </Provider>
+       <ReactQueryDevtools/>
     </QueryClientProvider>
 
   );

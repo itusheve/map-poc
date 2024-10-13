@@ -7,8 +7,8 @@ import {
   GeoJsonDataSource,
 } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
-import { REGIONS_ARRAY } from "../utils/const";
-import { TopRightActionRow } from "./TopRightActionRow";
+import { REGIONS_ARRAY } from "../../utils/const";
+import { TopRightActionRow } from "../../components/TopRightActionRow";
 
 export function CesiumMap() {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);

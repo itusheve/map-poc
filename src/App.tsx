@@ -1,4 +1,4 @@
-import {CesiumMap} from './components/CesiumMap';
+import {CesiumMap} from './Pages/Home/CesiumMap';
 import './App.css'
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './utils/queryClient';

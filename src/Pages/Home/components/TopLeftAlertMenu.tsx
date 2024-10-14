@@ -3,6 +3,8 @@ import { LeftArrowSvg } from "../../../components/Icons/LeftArrow"
 import { AlertSvg } from "../../../components/Icons/Alert"
 import { RightArrowSvg } from "../../../components/Icons/RightArrow"
 import { ListOfAlerts } from "./ListOfAlerts"
+import { ArrowTopSvg } from "../../../components/Icons/ArrowTop"
+import { OpenArrowsSvg } from "../../../components/Icons/OpenArrowsSvg"
 
 export function TopLeftAlertMenu() {
     const [isAlertOpen, setIsAlertOpen] = useState(false)
@@ -15,8 +17,8 @@ export function TopLeftAlertMenu() {
                 </button>
             </div>
             <ListOfAlerts />
-            <div className=" bg-secondary text-primary-foreground ">
-
+            <div className="  ">
+                <ConnectedDevicesBottomMenu />
             </div>
         </div>
     }
@@ -37,8 +39,15 @@ export function TopLeftAlertMenu() {
 
 
 export function ConnectedDevicesBottomMenu() {
-    return <div className="flex flex-col gap-2">
-        
+    return <div className="flex gap-2 bg-secondary text-primary-foreground">
+        <ArrowTopSvg />
+        <div className=" flex-1">
+            <h2 className=" text-primary-foreground">Issues in connected devices</h2>
+            <div className=" text-alert-foreground">4 Issues</div>
+        </div>
+        <div className="grid place-content-center p-1">
+            <OpenArrowsSvg />
+        </div>
     </div>
 }
 

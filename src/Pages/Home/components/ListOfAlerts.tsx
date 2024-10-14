@@ -3,7 +3,7 @@ import { AlertIssueSvg } from "../../../components/Icons/AlertIssueSvg";
 import { WarnSvg } from "../../../components/Icons/WarnSvg";
 
 export function ListOfAlerts() {
-    return <div className="flex flex-col gap-2 p-2">
+    return <div className="flex flex-col gap-2 p-2 h-[80vh]">
         {/* This is the opened controlled menu */}
         <div className="flex justify-between ">
             <div className="flex gap-2 bg-secondary p-1 rounded">
@@ -57,9 +57,7 @@ export function ListOfAlerts() {
                         </div>
                         
                     </div>
-                    
                 </div>
-                
             </div>
         </div>
     </div>

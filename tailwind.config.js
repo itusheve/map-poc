@@ -57,6 +57,10 @@ export default {
 			alert: {
 				DEFAULT: '#2D2D2D',
 				foreground: '#F87171'
+			},
+			active: {
+				DEFAULT: '#BB86FC',
+				foreground: '#1C1B1B'
 			}
   		}
   	}

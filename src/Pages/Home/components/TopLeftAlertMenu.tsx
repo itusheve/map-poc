@@ -3,6 +3,7 @@ import { LeftArrowSvg } from "../../../components/Icons/LeftArrow"
 import { AlertSvg } from "../../../components/Icons/Alert"
 import { RightArrowSvg } from "../../../components/Icons/RightArrow"
 import { AlertIssueSvg } from "../../../components/Icons/AlertIssueSvg"
+import { WarnSvg } from "../../../components/Icons/WarnSvg"
 
 export function TopLeftAlertMenu() {
     const [isAlertOpen, setIsAlertOpen] = useState(false)
@@ -72,9 +73,9 @@ export function ListOfAlerts() {
                         <div className="text-[#7C7C7C]">Wednesday 12:03</div>
                         <div className="flex flex-col gap-4">
                             <div className="flex gap-4">
-                                <div>warn</div>
+                                <div><WarnSvg /></div>
                                 <div>
-                                    <b>תקלה</b>
+                                    <b>אזהרה</b>
                                     <div>
                                         תקלה!
                                         אמצעי SDA-A, RX:0 הגיע לטמפרטורה גבוהה, בוצע כיבוי אוטומטי. 

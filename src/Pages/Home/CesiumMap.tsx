@@ -84,9 +84,25 @@ export function CesiumMap() {
         <div className="absolute top-12 left-2">
           <TopLeftAlertMenu />
         </div>
+        <div className="absolute bottom-4 right-2 w-[73vw]">
+          <GnatAndPMButtonMenu />
+        </div>
       </div>
     </>
   );
+}
+
+export function GnatAndPMButtonMenu() {
+  return <div>
+    <div className="flex justify-between">
+      <button className="p-2 bg-primary text-primary-foreground ">
+        gant menu
+      </button>
+      <button className="p-2 bg-primary text-primary-foreground ">
+        new PM
+      </button>
+    </div>
+  </div>
 }
 
 

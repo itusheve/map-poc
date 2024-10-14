@@ -24,11 +24,12 @@ export default {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
+  
+  				DEFAULT: '#1C1B1B',
+  				foreground: '#E4E4E4'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: '#2D2D2D',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {
@@ -52,7 +53,11 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+			alert: {
+				DEFAULT: '#2D2D2D',
+				foreground: '#F87171'
+			}
   		}
   	}
   },

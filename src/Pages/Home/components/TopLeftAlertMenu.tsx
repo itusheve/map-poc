@@ -52,6 +52,7 @@ export function ConnectedDevicesBottomMenu() {
             </div>
 
         </div>
+        {/* TODO: add transition to the elements */}
         {isOpen ? <div className="py-2 px-2 flex flex-col gap-2">
             <div className="flex justify-between bg-[#363636] px-2 py-1 items-center rounded">
                 <div>SDA-A, RX:0</div>

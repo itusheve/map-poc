@@ -61,6 +61,10 @@ export default {
 			active: {
 				DEFAULT: '#BB86FC',
 				foreground: '#1C1B1B'
+			},
+			warning: {
+				DEFAULT: '#BB86FC',
+				foreground: '#CA8A04'
 			}
   		}
   	}

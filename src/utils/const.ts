@@ -103,11 +103,13 @@ export const MENU_LIST = [
     {
         icon: 'Home',
         title: 'Home',
-        component: HomeSVG
+        component: HomeSVG,
+        path: '/'
     },
     {
         icon: 'CheckList',
-        title: 'Working Items',
-        component: CheckListSVG
+        title: 'Tools Eligibility',
+        component: CheckListSVG,
+        path: '/tools-eligibility'
     }
 ] as const

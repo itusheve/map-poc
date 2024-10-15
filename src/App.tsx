@@ -5,6 +5,7 @@ import { HydrateAtoms, queryClient } from './utils/queryClient';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Test } from './components/test';
 import { Provider } from 'jotai/react'
+import { ToolsEligibility } from './Pages/ToolsEligibility/ToolsEligibility';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 function App() {
@@ -19,6 +20,10 @@ function App() {
       element: <Test />,
       // errorElement: <ErrorPage />,
     },
+    {
+      path: '/tools-eligibility',
+      element: <ToolsEligibility />
+    }
   ]);
 
   return (

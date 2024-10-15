@@ -3,7 +3,7 @@ import { IconPropsI } from "./types";
 
 export function WarnSvg(props: IconPropsI) {
 
-    return <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" className={props.className} style={props.style}>
+    return <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg" className={props.className} style={props.style} onClick={() => props.onClick?.()}>
         <g clip-path="url(#clip0_32_3301)">
             <path d="M10.8737 14.2863H10.8821" stroke="#CA8A04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             <path d="M10.8737 7.61951V10.9528" stroke="#CA8A04" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

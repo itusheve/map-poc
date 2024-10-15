@@ -63,6 +63,10 @@ export default {
 				DEFAULT: '#BB86FC',
 				foreground: '#1C1B1B'
 			},
+			approve: {
+				DEFAULT: '#10B981',
+				// foreground: '#34D399'
+			},
 			warning: {
 				DEFAULT: '#BB86FC',
 				foreground: '#CA8A04'

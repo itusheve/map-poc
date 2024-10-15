@@ -86,7 +86,7 @@ export function CesiumMap() {
         <div className="absolute top-12 left-2">
           <TopLeftAlertMenu />
         </div>
-        <div className="absolute bottom-4 right-2 w-[73vw]">
+        <div className="absolute bottom-4 right-2 w-[90dvw]">
           <GnatAndPMButtonMenu />
         </div>
       </div>

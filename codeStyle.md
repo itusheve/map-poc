@@ -42,7 +42,7 @@
 * don't use the if and in the same line like {condition && <div>...</div>}
 * class name should be in the format of ``` <div className="class-name">...</div> ``` and also with the component or or file related name unless it's a global class for example ``` <div className="task-management-dialog-header-item">...</div> ```
 * when checking phones sizes check Iphone 12 pro , Iphone 14 pro and Samsung S8
-
+* No text should be hardcoded in the code, always use the translation file
 
 ---------
 

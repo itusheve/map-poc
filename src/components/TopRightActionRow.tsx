@@ -19,12 +19,12 @@ export function TopRightActionRow(props: TopRightActionRowPropsI) {
             {REGIONS_ARRAY.map((region, index) => <option key={region.key} value={index}>{region.key}</option>)}
         </select>
         <div className="relative">
-            <button type="button" onClick={() => setIsFilterOpen(!isFilterOpen)} className={` ${isFilterOpen ? 'bg-purple-400 text-white' : ''}`}>
+            <button type="button" onClick={() => setIsFilterOpen(!isFilterOpen)} className={`px-2 ${isFilterOpen ? 'bg-purple-400 text-white' : ''}`}>
                 filter icon
             </button>
             <div>
-                {isFilterOpen && <div className="absolute top-10 right-0 bg-white border border-gray-300">
-                    {FILTER_LIST.map((filter) => <div key={filter.key} className={`p-2 hover:bg-slate-300 transition-all cursor-pointer rounded border-t-slate-400 border-t-[1px] ${filter_list_keys.includes(filter.key) ? ' bg-green-300' : ''}`}
+                {isFilterOpen && <div className="absolute top-10 right-0 bg-white border border-gray-300 w-[12rem]">
+                    {FILTER_LIST.map((filter) => <div key={filter.key} className={`p-2 hover:bg-slate-300 transition-all cursor-pointer rounded border-t-slate-400 border-t-[1px] flex gap-2`}
                     onClick={() => {
                         set_filter_list_keys((prev) => {
                             if (prev.includes(filter.key)) {
@@ -34,7 +34,10 @@ export function TopRightActionRow(props: TopRightActionRowPropsI) {
                             }
                         })
                     }}
-                    >{filter.value}</div>)}
+                    >
+                    <input type="checkbox" checked={filter_list_keys.includes(filter.key)} />    
+                    {filter.value}
+                </div>)}
                 </div>}
             </div>
         </div>

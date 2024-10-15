@@ -1,3 +1,6 @@
+import { CheckListSVG } from "../components/Icons/CheckListSVG";
+import { HomeSVG } from "../components/Icons/HomeSVG";
+
 export const regions = {
     north: {
       longitude: 35.2033,
@@ -94,3 +97,17 @@ export const FILTER_LIST = [
   },
 
 ] as const;
+
+
+export const MENU_LIST = [
+    {
+        icon: 'Home',
+        title: 'Home',
+        component: HomeSVG
+    },
+    {
+        icon: 'CheckList',
+        title: 'Working Items',
+        component: CheckListSVG
+    }
+] as const

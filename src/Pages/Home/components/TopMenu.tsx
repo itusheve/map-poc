@@ -2,9 +2,12 @@ import { useState } from "react";
 import { TreeLinesHamburgerSVG } from "../../../components/Icons/TreeLinesHamburgerSVG";
 import { MENU_LIST } from "../../../utils/const";
 import { NavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 
 export function TopMenu() {
+    const { i18n } = useTranslation();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return <div className="h-full flex justify-between items-center px-2 bg-primary text-primary-foreground">
       <div className="flex gap-4 relative">
@@ -19,7 +22,14 @@ export function TopMenu() {
         </div> : <></>}
       </div>
       <div>
-        Operational env
+        <div>
+          Operational env
+        </div>
+        <select value={i18n.language} onChange={(e) => i18n.changeLanguage(e.target.value)}>
+          {/* {i18n.languages.map((lang) => <option key={lang} value={lang}>{lang}</option>)} */}
+          <option  value={'he'}>he</option>
+          <option  value={'en'}>en</option>
+        </select>
       </div>
     </div> 
   }

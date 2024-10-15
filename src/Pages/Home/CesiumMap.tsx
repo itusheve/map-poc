@@ -77,8 +77,8 @@ export function CesiumMap() {
 
   return (
     <>
-      <div className="h-[6dvh]">
-        <div>
+      <div className="h-[6dvh] w-[100dvw] flex justify-between items-center px-2 bg-primary text-primary-foreground">
+        <div className="flex gap-4 ">
           <TreeLinesHamburgerSVG />
           <div>
             Mozart

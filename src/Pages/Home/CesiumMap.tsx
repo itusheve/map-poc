@@ -106,7 +106,7 @@ export function TopMenu() {
         Mozart
       </div>
       {isMenuOpen ? <div className=" absolute w-[15vw] top-4 z-20 bg-primary text-primary-foreground px-2">
-        {MENU_LIST.map((menu) => <div key={menu.title} className={`flex gap-2 p-2 hover:border-b hover:border-t hover:border-purple-500`}>
+        {MENU_LIST.map((menu) => <div key={menu.title} className={`flex gap-2 p-2 hover:border-b hover:border-t hover:border-active`}>
           {<menu.component className=""  />} {menu.title}
         </div>)}
       </div> : <></>}

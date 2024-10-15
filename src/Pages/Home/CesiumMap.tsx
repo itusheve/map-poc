@@ -32,7 +32,7 @@ export function CesiumMap() {
     });
 
     const imageryProvider = new UrlTemplateImageryProvider({
-      url: "http://localhost:8080/{z}/{x}/{y}.png",
+      url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", // https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png
       minimumLevel: 0,
       maximumLevel: 15,
       tileWidth: 256,

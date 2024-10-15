@@ -12,9 +12,9 @@ export function TopLeftAlertMenu() {
         return <div className="bg-primary text-primary-foreground w-[25vw] relative">
             <div className="flex justify-end items-center gap-2 ">
                 <div> Alerts and threats </div>
-                <button onClick={() => setIsAlertOpen(false)}>
+                <div className=" cursor-pointer" onClick={() => setIsAlertOpen(false)}>
                     <LeftArrowSvg />
-                </button>
+                </div>
             </div>
             <ListOfAlerts />
             <div className="  ">
@@ -29,9 +29,9 @@ export function TopLeftAlertMenu() {
                 alert count = 12
             </div>
             <div className="flex flex-col justify-center">
-                <button onClick={() => setIsAlertOpen(true)}>
+                <div className="cursor-pointer" onClick={() => setIsAlertOpen(true)}>
                     <RightArrowSvg />
-                </button>
+                </div>
             </div>
         </button>
     </div>

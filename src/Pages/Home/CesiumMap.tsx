@@ -77,9 +77,19 @@ export function CesiumMap() {
 
   return (
     <>
-
+      <div className="h-[6dvh]">
+        <div>
+          <TreeLinesHamburgerSVG />
+          <div>
+            Mozart
+          </div>
+        </div>
+        <div>
+          Operational env
+        </div>
+      </div>
       <div className=" relative ">
-        <div ref={cesiumContainerRef} className="w-[100dvw] h-[100dvh]" />
+        <div ref={cesiumContainerRef} className="w-[100dvw] h-[94dvh]" />
         <div className=" absolute top-12 right-2">
           <TopRightActionRow flyToRegion={flyToRegion} />
         </div>
@@ -171,6 +181,7 @@ export function GnatDetails() {
 
 
 import moment from 'moment'
+import { TreeLinesHamburgerSVG } from "../../components/Icons/TreeLinesHamburgerSVG";
 export function TimeList(steps: number) : string[] {
   let timeList: string[] = []
   let time = moment().subtract('hours', 6);

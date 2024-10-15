@@ -78,16 +78,8 @@ export function CesiumMap() {
 
   return (
     <>
-      <div className="h-[6dvh] w-[100dvw] flex justify-between items-center px-2 bg-primary text-primary-foreground">
-        <div className="flex gap-4 ">
-          <TreeLinesHamburgerSVG />
-          <div>
-            Mozart
-          </div>
-        </div>
-        <div>
-          Operational env
-        </div>
+      <div className="h-[6dvh] w-[100dvw]">
+        <TopMenu />
       </div>
       <div className=" relative ">
         <div ref={cesiumContainerRef} className="w-[100dvw] h-[94dvh]" />
@@ -105,4 +97,17 @@ export function CesiumMap() {
   );
 }
 
+export function TopMenu() {
+  return <div className="h-full flex justify-between items-center px-2 bg-primary text-primary-foreground">
+    <div className="flex gap-4 ">
+      <TreeLinesHamburgerSVG />
+      <div>
+        Mozart
+      </div>
+    </div>
+    <div>
+      Operational env
+    </div>
+  </div> 
+}
 

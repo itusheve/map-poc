@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Test } from './components/test';
 import { Provider } from 'jotai/react'
 import { ToolsEligibility } from './Pages/ToolsEligibility/ToolsEligibility';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 // import { useEffect } from 'react';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
@@ -28,7 +28,7 @@ function App() {
     }
   ]);
 
-  // const { i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   //   // Change direction when language is switched
   //   useEffect(() => {
@@ -45,8 +45,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Provider>
         <HydrateAtoms>
-
-          <RouterProvider router={router} />
+          <div className={`${i18n.language === 'he' ? 'rtl' : 'ltr'}`} dir={`${i18n.language === 'he' ? 'rtl' : 'ltr'}`}>
+            <RouterProvider router={router} />
+          </div>
         </HydrateAtoms>
       </Provider>
       {/* <ReactQueryDevtools /> */}

@@ -21,7 +21,7 @@ export function TopMenu() {
           </NavLink>)}
         </div> : <></>}
       </div>
-      <div>
+      <div className="flex gap-2">
         <div>
           Operational env
         </div>

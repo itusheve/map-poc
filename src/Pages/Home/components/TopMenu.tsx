@@ -13,7 +13,7 @@ export function TopMenu() {
           Mozart
         </div>
         {isMenuOpen ? <div className=" absolute w-[15vw] top-4 z-20 bg-primary text-primary-foreground px-2">
-          {MENU_LIST.map((menu) => <NavLink to={menu.path} key={menu.title} className={({ isActive }) => `flex gap-2 p-2 hover:border-b hover:border-t hover:border-active text-white hover:text-white transition-all ${isActive ? " text-active" : ""}`}>
+          {MENU_LIST.map((menu) => <NavLink to={menu.path} key={menu.title} className={({ isActive }) => `flex gap-2 p-2 hover:border-b hover:border-t hover:border-active  text-white hover:text-white transition-all ${isActive ? " text-active" : ""}`}>
             {<menu.component className=""  />} {menu.title}
           </NavLink>)}
         </div> : <></>}

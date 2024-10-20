@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Viewer,
   Cartesian3,
@@ -7,33 +7,15 @@ import {
   GeoJsonDataSource,
 } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
+import { REGIONS_ARRAY } from "../../utils/const";
+import { TopRightActionRow } from "../../components/TopRightActionRow";
+import { TopLeftAlertMenu } from "./components/TopLeftAlertMenu";
+import { GnatAndPMButtonMenu } from "./components/GnatAndPMButtonMenu";
+import { TopMenu } from "./components/TopMenu";
 
-const CesiumMap: React.FC = () => {
+export function CesiumMap() {
   const cesiumContainerRef = useRef<HTMLDivElement>(null);
   const [viewer, setViewer] = useState<Viewer | null>(null);
-
-  const regions = {
-    north: {
-      longitude: 35.2033,
-      latitude: 33.095,
-      altitude: 100000,
-    },
-    south: {
-      longitude: 34.7913,
-      latitude: 29.5581,
-      altitude: 100000,
-    },
-    east: {
-      longitude: 35.5735,
-      latitude: 31.0461,
-      altitude: 100000,
-    },
-    west: {
-      longitude: 34.3289,
-      latitude: 31.0461,
-      altitude: 100000,
-    },
-  };
 
   useEffect(() => {
     if (!cesiumContainerRef.current) return;
@@ -48,7 +30,7 @@ const CesiumMap: React.FC = () => {
     });
 
     const imageryProvider = new UrlTemplateImageryProvider({
-      url: "http://localhost:8080/{z}/{x}/{y}.png",
+      url: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", // https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png
       minimumLevel: 0,
       maximumLevel: 15,
       tileWidth: 256,
@@ -81,11 +63,11 @@ const CesiumMap: React.FC = () => {
     };
   }, []);
 
-  const flyToRegion = (regionKey: keyof typeof regions) => {
+  const flyToRegion = (index: number) => {
     if (viewer) {
-      const { longitude, latitude, altitude } = regions[regionKey];
+      const region = REGIONS_ARRAY[index];
       viewer.camera.flyTo({
-        destination: Cartesian3.fromDegrees(longitude, latitude, altitude),
+        destination: Cartesian3.fromDegrees(region.longitude, region.latitude, region.altitude),
         duration: 2.0,
       });
     }
@@ -93,20 +75,24 @@ const CesiumMap: React.FC = () => {
 
   return (
     <>
-      <div>
-        <select
-          onChange={(e) => flyToRegion(e.target.value as keyof typeof regions)}
-        >
-          <option value="">Select Region</option>
-          <option value="north">North of Israel</option>
-          <option value="south">South of Israel</option>
-          <option value="east">East of Israel</option>
-          <option value="west">West of Israel</option>
-        </select>
+      <div className="h-[6dvh] w-[100dvw]">
+        <TopMenu />
       </div>
-      <div ref={cesiumContainerRef} style={{ width: "100%", height: "90vh" }} />
+      <div className=" relative ">
+        <div ref={cesiumContainerRef} className="w-[100dvw] h-[94dvh]" />
+        <div className=" absolute top-12 right-2">
+          <TopRightActionRow flyToRegion={flyToRegion} />
+        </div>
+        <div className="absolute top-12 left-2">
+          <TopLeftAlertMenu />
+        </div>
+        <div className="absolute bottom-4 right-2 w-[90dvw]">
+          <GnatAndPMButtonMenu />
+        </div>
+      </div>
     </>
   );
-};
+}
 
-export default CesiumMap;
+
+

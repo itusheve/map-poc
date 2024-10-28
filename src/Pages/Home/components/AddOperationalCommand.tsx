@@ -52,10 +52,10 @@ interface AddOperationalCommandFormI {
 export function AddOperationalCommand() {
     const form = useForm<AddOperationalCommandFormI>();
 
-    const [step, setStep] = useState<'General' | 'Category'>()
+    const [step, setStep] = useState<'General' | 'Category'>('General')
 
-    return <FormProvider  {...form}>
-        <form>
+    return <FormProvider  {...form} >
+        <form className=" text-white">
             {step === 'General' && <GeneralDetails nextStep={() => setStep('Category')} />}
             {step === 'Category' && <CategoryDetails />}
         </form>
@@ -74,30 +74,43 @@ export function GeneralDetails(props: FormStepsProps) {
         control: form.control,
         name: 'operationalTimes'
     })
-    return <div>
-        <input type="text" {...form.register('commandName')} />
-        <input type="text" {...form.register('requiredEntity')} />
-        <h2>operational Times</h2>
-        {operationalTimes.fields.map((field, index) => <div key={field.id}>
-            <input type="date" {...form.register(`operationalTimes.${index}.start.date`)} />
-            <input type="time" {...form.register(`operationalTimes.${index}.start.time`)} />
-            <input type="date" {...form.register(`operationalTimes.${index}.end.date`)} />
-            <input type="time" {...form.register(`operationalTimes.${index}.end.time`)} />
-            <button type="button"
-                onClick={() => operationalTimes.remove(index)}>
-                Remove Time
-            </button>
-        </div>)}
-        <button type="button" onClick={() => operationalTimes.append({
-            start: {
-                date: '',
-                time: ''
-            },
-            end: {
-                date: '',
-                time: ''
-            }
-        })}>Add Time</button>
+    return <div className=" text-red-600 bg-slate-300 border border-red-700 ">
+        <div className=" text-red-600 bg-slate-300">operational Times</div>
+        <div className="flex gap-2">
+            <input type="text" placeholder="command name" {...form.register('commandName')} />
+            <input type="text" placeholder="required entity" {...form.register('requiredEntity')} />
+        </div>
+        <div className="flex flex-col gap-2 pt-2">
+            {operationalTimes.fields.map((field, index) => <div key={field.id}>
+                <div>
+                    start time
+                    <input type="date" {...form.register(`operationalTimes.${index}.start.date`)}  />
+                    <input type="time" {...form.register(`operationalTimes.${index}.start.time`)} />
+                
+                </div>
+                <div>
+                    end time
+                    <input type="date" {...form.register(`operationalTimes.${index}.end.date`)} />
+                    <input type="time" {...form.register(`operationalTimes.${index}.end.time`)} />
+                </div>
+                <button type="button"
+                    onClick={() => operationalTimes.remove(index)}>
+                    Remove Time
+                </button>
+            </div>)}
+        </div>
+        <div className="pb-2">
+            <button type="button" onClick={() => operationalTimes.append({
+                start: {
+                    date: '',
+                    time: ''
+                },
+                end: {
+                    date: '',
+                    time: ''
+                }
+            })}>Add Time</button>
+        </div>
 
         <button type="button" onClick={() => props.nextStep()}>Next command</button>
 
@@ -109,8 +122,8 @@ export function CategoryDetails() {
     const form = useFormContext();
 
     return <div>
-        <input type="text" {...form.register('commandName')} />
-        <input type="text" {...form.register('requiredEntity')} />
+        <input type="text" placeholder="command Name" {...form.register('commandName')} />
+        <input type="text" placeholder="required Entity" {...form.register('requiredEntity')} />
 
     </div>
 

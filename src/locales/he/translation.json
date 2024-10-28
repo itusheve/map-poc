@@ -6,5 +6,8 @@
             "UnreadAlerts": "התראות שלא נקראו",
             "NoUreadAlerts": "אין התראות שלא נקראו"
         }
+    },
+    "TopMenu": {
+        "RealEnvironment": "סביבת אמת"
     }
 }

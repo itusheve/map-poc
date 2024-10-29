@@ -64,6 +64,8 @@ export function AddOperationalCommand() {
 }
 import { useFormContext } from "react-hook-form";
 import { useState } from "react";
+import moment from "moment";
+import { DATE_FORMAT, TIME_FORMAT } from "../../../utils/const";
 
 interface FormStepsProps {
     nextStep: () => void;
@@ -81,7 +83,7 @@ export function GeneralDetails(props: FormStepsProps) {
             <input type="text" placeholder="required entity" {...form.register('requiredEntity')} />
         </div>
         <div className="flex flex-col gap-2 pt-2">
-            {operationalTimes.fields.map((field, index) => <div key={field.id}>
+            {operationalTimes.fields.map((field, index) => <div key={field.id} className="flex gap-4 items-center">
                 <div>
                     start time
                     <input type="date" {...form.register(`operationalTimes.${index}.start.date`)}  />
@@ -102,12 +104,13 @@ export function GeneralDetails(props: FormStepsProps) {
         <div className="pb-2">
             <button type="button" onClick={() => operationalTimes.append({
                 start: {
-                    date: '',
-                    time: ''
+                    date: moment().format(DATE_FORMAT),
+                    time: moment().format(TIME_FORMAT)
                 },
                 end: {
-                    date: '',
-                    time: ''
+                    // FIXME: ask yinon and itamar about the time
+                    date: moment().add(5, 'hours').format(DATE_FORMAT),
+                    time: moment().add(5, 'hours').format(TIME_FORMAT)
                 }
             })}>Add Time</button>
         </div>

@@ -258,3 +258,15 @@ export function TechnicSH() {
         
     </div>
 }
+
+
+export function ChoosePath() {
+    // here need to be the path to choose
+    // const form = useFormContext<AddOperationalCommandFormI>();
+
+    return <div>
+        <div>
+            path name
+        </div>
+    </div>
+}

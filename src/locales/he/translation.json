@@ -1,3 +1,13 @@
 {
-    "Test": "Hebrew"
+    "Test": "Hebrew",
+    "TopLeftAlertMenu": {
+        "Button": {
+            "AlertsAndThreats": "התראות ואיומים",
+            "UnreadAlerts": "התראות שלא נקראו",
+            "NoUreadAlerts": "אין התראות שלא נקראו"
+        }
+    },
+    "TopMenu": {
+        "RealEnvironment": "סביבת אמת"
+    }
 }

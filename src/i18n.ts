@@ -12,7 +12,7 @@ i18n
     backend: {
       // Path to load the translations from (adjust if necessary)
     //   loadPath: '/locales/{{lng}}/translation.json',
-    loadPath: 'src/locales/{{lng}}/{{ns}}.json'
+    loadPath: 'src/locales/{{lng}}/translation.json'
 
     },
     interpolation: {

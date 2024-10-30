@@ -5,9 +5,15 @@ import { RightArrowSvg } from "../../../components/Icons/RightArrow"
 import { ListOfAlerts } from "./ListOfAlerts"
 import { ArrowTopSvg } from "../../../components/Icons/ArrowTop"
 import { OpenArrowsSvg } from "../../../components/Icons/OpenArrowsSvg"
+import { MuteAlertSvg } from "../../../components/Icons/MuteAlert"
+import { useTranslation } from "react-i18next"
 
 export function TopLeftAlertMenu() {
+    const {t} = useTranslation();
+    
     const [isAlertOpen, setIsAlertOpen] = useState(false)
+    const [isAlertMuted, setIsAlertMuted] = useState(false)
+    const [unreadAlerts] = useState(0)
     if (isAlertOpen) {
         return <div className="bg-primary text-primary-foreground w-[25vw] relative">
             <div className="flex justify-end items-center gap-2 ">
@@ -22,18 +28,20 @@ export function TopLeftAlertMenu() {
             </div>
         </div>
     }
-    return <div className=" flex flex-col gap-2 ">
-        <button className="flex gap-1  items-center bg-primary text-primary-foreground">
-            <AlertSvg className="flex flex-col justify-center" />
-            <div className="flex flex-col justify-center">
-                alert count = 12
-            </div>
-            <div className="flex flex-col justify-center">
-                <div className="cursor-pointer" onClick={() => setIsAlertOpen(true)}>
-                    <RightArrowSvg />
+    return <div className="flex grid-cols-2 divide-x divide-x-reverse divide-[#CADFFF26] gap-0.5 items-center text-primary-foreground rounded-[20px] bg-primary">
+        <div className="flex grid-cols-2 p-2">
+            <button className="flex gap-0.5 items-center" onClick={() => setIsAlertOpen(true)}>
+                <div><RightArrowSvg /></div>
+                <div className="text-right">
+                    <div className="text-sm">{t('TopLeftAlertMenu.Button.AlertsAndThreats')}</div>
+                    {unreadAlerts ?
+                        <div className='text-xs text-[#FF5457]'>{unreadAlerts}{' '}{t('TopLeftAlertMenu.Button.UnreadAlerts')}</div>
+                        : <div className='text-xs text-[#9B9B9B]'>{t('TopLeftAlertMenu.Button.NoUreadAlerts')}</div>
+                    }
                 </div>
-            </div>
-        </button>
+            </button>
+        </div>
+        <button className="flex flex-col justify-center p-2" onClick={() => setIsAlertMuted(!isAlertMuted)}>{isAlertMuted ? <MuteAlertSvg /> : <AlertSvg />}</button>
     </div>
 }
 

@@ -199,7 +199,6 @@ export function CategoryDetails() {
             // This is a rare case where we need to cast the selected values to the correct type because the type of the value is string but you know that the value is a TechnicsTypes
             const selectedValues = Array.from(e.target.selectedOptions, option => option.value) as TechnicsTypes[];
             console.log(selectedValues)
-            debugger
             // This is the way to set the value of the form
             if (technics === undefined) {
                 for (const v of selectedValues) {
@@ -234,7 +233,10 @@ export function CategoryDetails() {
 export function TechnicCW() {
     const form = useFormContext<AddOperationalCommandFormI>();
 
-    return <div className="flex gap-3 flex-col">
+    return <div className="flex gap-3 flex-col bg-blue-600">
+        <h1 className=" text-2xl">
+        TechnicCW 
+        </h1>
         <input type="number" {...form.register('technics.CW.dbm')} />
         <input type="number" {...form.register('technics.CW.frequency')} />
         <select {...form.register('technics.CW.modulation')}>
@@ -247,7 +249,10 @@ export function TechnicCW() {
 export function TechnicSH() {
     const form = useFormContext<AddOperationalCommandFormI>();
 
-    return <div className="flex gap-3 flex-col">
+    return <div className="flex gap-3 flex-col bg-green-400">
+        <h1 className=" text-2xl">
+            TechnicSH
+        </h1>
         <input type="text" {...form.register('technics.SH.name')} />
         <input type="number" {...form.register('technics.SH.x')} />
         

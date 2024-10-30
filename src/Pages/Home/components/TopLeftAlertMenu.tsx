@@ -15,14 +15,14 @@ export function TopLeftAlertMenu() {
     const [isAlertMuted, setIsAlertMuted] = useState(false)
     const [unreadAlerts] = useState(0)
     if (isAlertOpen) {
-        return <div className="bg-primary text-primary-foreground w-[25vw] relative">
-            <div className="flex justify-end items-center gap-2 ">
-                <div> Alerts and threats </div>
+        return <div className="bg-[#0d1d3599] shadow-[9px_0px_12.4px_0px_rgba(0,0,0,0.25)] backdrop-blur-[35px] rounded-[20px] text-primary-foreground w-[25vw] relative">
+            <div className="flex justify-start items-center gap-2 p-2">
                 <div className=" cursor-pointer" onClick={() => setIsAlertOpen(false)}>
                     <LeftArrowSvg />
                 </div>
+                <div className="text-lg font-bold">{t('TopLeftAlertMenu.Button.AlertsAndThreats')}</div>
             </div>
-            <ListOfAlerts />
+            <ListOfAlerts isAlertMuted={isAlertMuted} setIsAlertMuted={() => setIsAlertMuted(!isAlertMuted)}/>
             <div className="  ">
                 <ConnectedDevicesBottomMenu />
             </div>

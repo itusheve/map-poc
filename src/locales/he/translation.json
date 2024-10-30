@@ -5,6 +5,14 @@
             "AlertsAndThreats": "התראות ואיומים",
             "UnreadAlerts": "התראות שלא נקראו",
             "NoUreadAlerts": "אין התראות שלא נקראו"
+        },
+        "ListOfAlerts": {
+            "Unread": "לא נקראו",
+            "archive": "ארכיון",
+            "CleanAlerts": "נקה התראות",
+            "Issue": "תקלה",
+            "Warn": "אזהרה",
+            "Read": "קראתי"
         }
     },
     "TopMenu": {

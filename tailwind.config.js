@@ -30,7 +30,7 @@ export default {
   				foreground: '#E4E4E4'
   			},
   			secondary: {
-  				DEFAULT: '#2D2D2D',
+  				DEFAULT: '#0E1A3299',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {
@@ -57,10 +57,10 @@ export default {
   			},
 			alert: {
 				DEFAULT: '#2D2D2D',
-				foreground: '#F87171'
+				foreground: '#E4E4E4'
 			},
 			active: {
-				DEFAULT: '#BB86FC',
+				DEFAULT: '#0063F7',
 				foreground: '#1C1B1B'
 			},
 			approve: {

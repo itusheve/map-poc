@@ -2,13 +2,9 @@ import { useTranslation } from "react-i18next"
 import { AlertSvg } from "../../../components/Icons/Alert";
 import { AlertIssueSvg } from "../../../components/Icons/AlertIssueSvg";
 import { WarnSvg } from "../../../components/Icons/WarnSvg";
-import { MuteAlertSvg } from "../../../components/Icons/MuteAlert";
 
-type Props = {
-    isAlertMuted: boolean,
-    setIsAlertMuted: () => void;
-}
-export function ListOfAlerts({ isAlertMuted, setIsAlertMuted }: Props) {
+
+export function ListOfAlerts() {
     const { t } = useTranslation();
 
     return <div className="flex flex-col gap-2 p-2 h-[80vh]">
@@ -20,7 +16,7 @@ export function ListOfAlerts({ isAlertMuted, setIsAlertMuted }: Props) {
             </div>
             <div className="flex gap-2">
                 <button className="bg-secondary p-1 rounded-3xl text-center">{t('TopLeftAlertMenu.ListOfAlerts.CleanAlerts')}</button>
-                <button className="bg-secondary p-1 rounded-3xl " onClick={() => setIsAlertMuted()}>{isAlertMuted ? <MuteAlertSvg /> : <AlertSvg />}</button>
+                <button className="bg-secondary p-1 rounded-3xl "><AlertSvg /></button>
             </div>
         </div>
         <div>

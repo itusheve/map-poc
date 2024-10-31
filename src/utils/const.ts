@@ -113,3 +113,7 @@ export const MENU_LIST = [
         path: '/tools-eligibility'
     }
 ] as const
+
+
+export const DATE_FORMAT = 'DD/MM/YYYY' as const;
+export const TIME_FORMAT = 'HH:mm' as const;

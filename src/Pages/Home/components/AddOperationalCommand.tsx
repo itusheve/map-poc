@@ -57,12 +57,6 @@ export const TechnicToInitValue: {
     CW: TechnicCWInitialValues,
     SH: TechnicSHInitialValues,
 }
-// export type TechnicsTypes = 'CW' | 'SH';
-
-// export const TechnicToInitValue: { [key in TechnicsTypes]: number } = {
-//     CW: 0,
-//     SH: 0,
-// };
 
 export const TechnicsList: { key:  TechnicsTypes, value: string}[] = [
     {
@@ -84,7 +78,6 @@ export const TechnicsFormZod = z.object({
 
 export type TechnicsFormType = z.infer<typeof TechnicsFormZod>;
 
-export type t = typeof TechnicsList
 interface AddOperationalCommandFormI {
     commandName: string;
     requiredEntity: string; // in the future this will be changed into type []

@@ -12,7 +12,9 @@ export const TrackDetailsAtom = atomWithQuery((get) => ({
   // validate the data using zod
   return {
     id: id,
-    name: 'track one',
+    name: 'שם מסלול',
+    pmName: 'שם פ״מ',
+    status: 'Active',
     coordinate: {
       N: 1323437766,
       E: 835794375,
@@ -20,6 +22,7 @@ export const TrackDetailsAtom = atomWithQuery((get) => ({
     devices: [{
       id: 53,
       name: 'xt24',
+      status: 'Active',
       issues: [{
         id: 24,
         date: '24/05/2024',

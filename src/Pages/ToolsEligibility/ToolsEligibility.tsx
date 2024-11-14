@@ -20,7 +20,7 @@ export function ToolsEligibility() {
 			</div> */}
 			<TracksList />
 			{track_selected !== null ? <InspectRoute /> : <></>}
-			
+
 		</div>
 	);
 }
@@ -226,10 +226,10 @@ export function useTracksListHook() {
 import { useSetAtom } from 'jotai';
 export function TracksList() {
 	const tracks_hooks = useTracksListHook()
-	const {t} = useTranslation()
+	const { t } = useTranslation()
 	const set_track_selected = useSetAtom(TrackSelectedAtom)
 	return <div className="grid grid-cols-4 gap-4 pt-4 px-2">
-		
+
 		{tracks_hooks.query.data?.map((row) => <div key={row.id} className="rounded-lg w-full text-primary-foreground bg-secondary-soft shadow-[0px_0px_8.8px_4px_rgba(0,0,0,0.07)]">
 			<div className={`flex justify-between ${row.status}Gradient rounded-lg px-2 font-bold text-md items-center`}>
 				<div>
@@ -271,18 +271,18 @@ import { useTranslation } from "react-i18next";
 export function InspectRoute() {
 	const track_details = useAtomValue(TrackDetailsAtom)
 	const set_track_selected = useSetAtom(TrackSelectedAtom)
-	const {t} = useTranslation()
+	const { t } = useTranslation()
 	if (track_details.data === null || track_details.data === undefined) return <div>
 		This is not supposed to be open
 	</div>
 	return <div>
-		<BottomDialog open={true} onClose={() => {} } >
+		<BottomDialog open={true} onClose={() => { }} >
 			<div className="h-[50vh] bg-primary">
 				<div className=" bg-secondary-soft text-primary-foreground">
 					<div className="flex justify-between p-2 ">
 						<div className="flex gap-4">
 							<div className=" bg-secondary-soft text-primary-foreground min-w-64 rounded-lg px-2">
-								{track_details.data.name} 
+								{track_details.data.name}
 							</div>
 							<div className="font-bold">
 								{t('NE')} {track_details.data.coordinate.N},{track_details.data.coordinate.E}
@@ -292,6 +292,36 @@ export function InspectRoute() {
 							<button type="button" onClick={() => set_track_selected(null)} className="bg-secondary-soft rounded"><XSvg className=" " /></button>
 						</div>
 					</div>
+				</div>
+				<div className="grid grid-cols-4 p-2 text-primary-foreground">
+					{track_details.data.devices.map((row) => <div key={row.id} className="bg-secondary-soft rounded-lg">
+						<div className="flex justify-between p-2">
+							<div className="flex-1 grid place-content-center font-bold">{row.name}</div>
+							<div className={`${row.status}Status rounded-lg p-1`}>{t(row.status)}</div>
+						</div>
+						<div className="border">
+							<div className="grid grid-cols-4">
+								<div>date</div>
+								<div>time</div>
+								<div>issue number</div>
+								<div>details</div>
+							</div>
+							{row.issues.map((issue) => <div className="grid grid-cols-4">
+								<div>
+									{issue.date}
+								</div>
+								<div>
+									{issue.time}
+								</div>
+								<div>
+									{issue.issueId}
+								</div>
+								<div>
+									{issue.issueText}
+								</div>
+							</div>)}
+						</div>
+					</div>)}
 				</div>
 			</div>
 		</BottomDialog>
@@ -306,31 +336,7 @@ export function InspectRoute() {
 				close
 			</button>
 		</div>
-		{track_details.data.devices.map((row) => <div key={row.id}>
-			{row.name} {row.id}
-			<div>
-			<div className="grid grid-cols-4">
-				<div>date</div>
-				<div>time</div>
-				<div>issue number</div>
-				<div>details</div>
-			</div>
-			{row.issues.map((issue) => <div className="grid grid-cols-4">
-				<div>
-					{issue.date}
-				</div>
-				<div>
-					{issue.time}
-				</div>
-				<div>
-					{issue.issueId}
-				</div>
-				<div>
-					{issue.issueText}
-				</div>
-			</div>)}
-			</div>
-		</div>)}
+
 	</div>
 }
 
@@ -339,28 +345,26 @@ import React from 'react';
 import { XSvg } from "../../components/Icons/XSvg";
 
 interface Props {
-  children: React.ReactNode;
-  open: boolean;
-  onClose: () => void;
+	children: React.ReactNode;
+	open: boolean;
+	onClose: () => void;
 }
 
 export function BottomDialog(props: Props) {
-  return (
-    <div
-      className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
-        props.open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-      } flex justify-center items-end`}
-      onClick={props.onClose}
-    >
-      <div
-        className={`bg-white w-full max-h-[80%] rounded-t-lg shadow-lg transform transition-transform duration-300 ${
-			props.open ? 'translate-y-0' : 'translate-y-full'
-        }`}
-        onClick={(e) => e.stopPropagation()}
-      >
+	return (
+		<div
+			className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${props.open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+				} flex justify-center items-end`}
+			onClick={props.onClose}
+		>
+			<div
+				className={`bg-white w-full max-h-[80%] rounded-t-lg shadow-lg transform transition-transform duration-300 ${props.open ? 'translate-y-0' : 'translate-y-full'
+					}`}
+				onClick={(e) => e.stopPropagation()}
+			>
 
-        {props.children}
-      </div>
-    </div>
-  );
+				{props.children}
+			</div>
+		</div>
+	);
 }

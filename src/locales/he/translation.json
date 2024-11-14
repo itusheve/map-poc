@@ -1,5 +1,5 @@
 {
-    "Test": "Hebrew",
+    "Test": "עברית",
     "TopLeftAlertMenu": {
         "Button": {
             "AlertsAndThreats": "התראות ואיומים",
@@ -25,5 +25,12 @@
     "TopMenu": {
         "RealEnvironment": "סביבת אמת"
     },
-    "OperationalCommand": "OP"
+    "OperationalCommand": "OP",
+    "NE": "נ.צ",
+    "active": "פעיל",
+    "Active": "כשיר",
+    "notConnected": "לא מחובר",
+    "MidActive": "חצי פעיל",
+    "InActive": "לא פעיל",
+    "Disconnected": "לא מחובר"
 }

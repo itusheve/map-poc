@@ -1,0 +1,25 @@
+
+.ErrorGradient {
+  background: linear-gradient(95.07deg, rgba(202, 223, 255, 0.15) 1.85%, rgba(255, 84, 87, 0.3) 97.51%)
+}
+.ActiveGradient {
+  background: linear-gradient(95.07deg, rgba(202, 223, 255, 0.15) 1.85%, rgba(0, 201, 161, 0.3) 97.51%)
+}
+.NotAssignedGradient {
+  background: #CADFFF26;
+  
+}
+
+
+.ActiveStatus {
+  background-color: #00C9A1;
+}
+.InActiveStatus {
+  background-color: #FF5457;
+}
+.DisconnectedStatus {
+  background-color: #CADFFF26;
+}
+.MidActiveStatus {
+  background-color: #FFAB00;
+}

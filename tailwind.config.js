@@ -7,6 +7,9 @@ export default {
 	],
 	theme: {
 		extend: {
+			backgroundImage: {
+				'active-gradient': 'linear-gradient(95.07deg, rgba(202, 223, 255, 0.15) 1.85%, rgba(0, 201, 161, 0.3) 97.51%)',
+			},
 			boxShadow: {
 				r: '9px 0px 12.4px 0px rgba(0,0,0,0.25)',
 				button: '0px 1px 2px -1px rgba(0,0,0,0.10), 0px 1px 3px 0px rgba(16,24,40,0.10)'
@@ -40,7 +43,7 @@ export default {
 					foreground: 'hsl(var(--popover-foreground))'
 				},
 				primary: {
-					DEFAULT: '#0d1d3599',
+					DEFAULT: '#323948',
 					foreground: '#E4E4E4'
 				},
 				secondary: {

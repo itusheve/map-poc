@@ -32,5 +32,10 @@
     "notConnected": "לא מחובר",
     "MidActive": "חצי פעיל",
     "InActive": "לא פעיל",
-    "Disconnected": "לא מחובר"
+    "Disconnected": "לא מחובר",
+    "StatusIssuesAndWarnings": "סטטוס תקלות ואזהרות",
+    "date": "תאריך",
+    "time": "שעה",
+    "issue": "תקלה",
+    "details": "פרטים"
 }

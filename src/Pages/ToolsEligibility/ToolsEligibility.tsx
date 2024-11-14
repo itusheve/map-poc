@@ -11,13 +11,13 @@ export function ToolsEligibility() {
 	return (
 		// TODO: remove this setting the width and do it automatic
 		<div className=" w-[100dvw]">
-			<div>
+			{/* <div>
 				<select>
 					<option value="all">All areas</option>
 					<option value="north">North</option>
 				</select>
 				<input type="text" placeholder="search" />
-			</div>
+			</div> */}
 			<TracksList />
 			{track_selected !== null ? <InspectRoute /> : <></>}
 			
@@ -64,7 +64,7 @@ export function useTracksListHook() {
 					status: 'Disconnected'
 				},
 				{
-					id: 45,
+					id: 85,
 					name: 'rxg42',
 					status: 'InActive'
 				},

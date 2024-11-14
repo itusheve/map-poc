@@ -7,6 +7,7 @@ import { Home } from "./Pages/Home/Home";
 import { ToolsEligibility } from "./Pages/ToolsEligibility/ToolsEligibility";
 import { HydrateAtoms, queryClient } from "./utils/queryClient";
 import { Itamar } from "./Pages/itamar/Itamar";
+import { OperationalCommandPage } from "./Pages/OperationalCommand/OperationalCommand";
 
 export function App() {
 	const router = createBrowserRouter([

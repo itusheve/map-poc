@@ -31,10 +31,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
 }
 
 h1 {
@@ -42,7 +38,7 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -59,7 +55,7 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -69,9 +65,9 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
+  /* button {
     background-color: #f9f9f9;
-  }
+  } */
 }
 
 @layer base {
@@ -137,4 +133,28 @@ button:focus-visible {
   body {
     @apply bg-background text-foreground;
   }
+
+  select {
+    appearance: none;
+  }
 }
+
+
+@layer components {
+  .scrollbar {
+    @apply max-h-[99%];
+
+    &::-webkit-scrollbar {
+      @apply w-2
+    }
+    &::-webkit-scrollbar-thumb {
+      @apply rounded-full bg-[#FFFFFF0A]
+    }
+    &.secondary {
+      &::-webkit-scrollbar-thumb {
+        @apply rounded-full bg-[#cadfff]
+      }
+    }
+  }
+}
+

@@ -1,81 +1,99 @@
-import { useState } from "react"
-import { LeftArrowSvg } from "../../../components/Icons/LeftArrow"
-import { AlertSvg } from "../../../components/Icons/Alert"
-import { RightArrowSvg } from "../../../components/Icons/RightArrow"
-import { ListOfAlerts } from "./ListOfAlerts"
-import { ArrowTopSvg } from "../../../components/Icons/ArrowTop"
-import { OpenArrowsSvg } from "../../../components/Icons/OpenArrowsSvg"
+import { useSetAtom } from "jotai";
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { AlertSvg } from "../../../components/Icons/AlertSvg";
+import { ArrowTopSvg } from "../../../components/Icons/ArrowTopSvg";
+import { LeftArrowSvg } from "../../../components/Icons/LeftArrowSvg";
+import { OpenArrowsSvg } from "../../../components/Icons/OpenArrowsSvg";
+import { RightArrowSvg } from "../../../components/Icons/RightArrowSvg";
+import { IsAlertsMenuOpen } from "../HomeState";
+
+import { AlertsList } from "./AlertsList";
+
+export function OpenTopLeftAlertMenuButton() {
+	const { t } = useTranslation();
+	const set_is_alerts_menu_open = useSetAtom(IsAlertsMenuOpen);
+
+	return (
+		<div className="flex grid-cols-2 items-center gap-0.5 divide-x divide-x-reverse divide-secondary-soft rounded-3xl bg-primary text-primary-foreground">
+			<div className="flex grid-cols-2 p-2">
+				<button className="flex items-center gap-0.5" onClick={() => set_is_alerts_menu_open(true)}>
+					<div><RightArrowSvg /></div>
+					<div className="text-right">
+						<div className="text-sm">{t("TopLeftAlertMenu.Button.AlertsAndThreats")}</div>
+						<div className="text-xs text-issue">{t("TopLeftAlertMenu.Button.UnreadAlerts")}</div>
+					</div>
+				</button>
+			</div>
+			<button className="flex flex-col justify-center p-2" ><AlertSvg /></button>
+		</div>
+	);
+}
 
 export function TopLeftAlertMenu() {
-    const [isAlertOpen, setIsAlertOpen] = useState(false)
-    if (isAlertOpen) {
-        return <div className="bg-primary text-primary-foreground w-[25vw] relative">
-            <div className="flex justify-end items-center gap-2 ">
-                <div> Alerts and threats </div>
-                <div className=" cursor-pointer" onClick={() => setIsAlertOpen(false)}>
-                    <LeftArrowSvg />
-                </div>
-            </div>
-            <ListOfAlerts />
-            <div className="  ">
-                <ConnectedDevicesBottomMenu />
-            </div>
-        </div>
-    }
-    return <div className=" flex flex-col gap-2 ">
-        <button className="flex gap-1  items-center bg-primary text-primary-foreground">
-            <AlertSvg className="flex flex-col justify-center" />
-            <div className="flex flex-col justify-center">
-                alert count = 12
-            </div>
-            <div className="flex flex-col justify-center">
-                <div className="cursor-pointer" onClick={() => setIsAlertOpen(true)}>
-                    <RightArrowSvg />
-                </div>
-            </div>
-        </button>
-    </div>
-}
+	const { t } = useTranslation();
+	const set_is_alerts_menu_open = useSetAtom(IsAlertsMenuOpen);
 
+	return (
+		<div className="box-border flex h-full w-[25vw] flex-col overflow-hidden rounded-3xl bg-primary text-primary-foreground shadow-r backdrop-blur-[35px]">
+			<div className="box-border flex h-min items-center justify-start gap-2 p-2">
+				<button onClick={() => set_is_alerts_menu_open(false)}>
+					<LeftArrowSvg />
+				</button>
+				<div className="text-lg font-bold">{t("TopLeftAlertMenu.Button.AlertsAndThreats")}</div>
+			</div>
+			<AlertsList />
+			<ConnectedDevicesBottomMenu />
+		</div>
+	);
+}
 
 export function ConnectedDevicesBottomMenu() {
-    const [isOpen, setIsOpen] = useState(false)
-    return <div className="absolute bottom-0 w-full bg-secondary pt-2 rounded">
-        <div className="flex gap-2  text-primary-foreground px-2 ">
-            <button onClick={() => setIsOpen(!isOpen)} className="pd-0 bg-primary" ><ArrowTopSvg className={`transition-all ${isOpen ? 'rotate-180' : ''}`} /></button>
-            <div className=" flex-1">
-                <h2 className=" text-primary-foreground">Issues in connected devices</h2>
-                <div className=" text-alert-foreground">4 Issues</div>
-            </div>
-            <div className="grid place-content-center p-1">
-                <OpenArrowsSvg className="" />
-            </div>
+	const { t } = useTranslation();
+	const [isOpen, setIsOpen] = useState(false);
 
-        </div>
-        {/* TODO: add transition to the elements */}
-        {isOpen ? <div className="py-2 px-2 flex flex-col gap-2">
-            <div className="flex justify-between bg-[#363636] px-2 py-1 items-center rounded">
-                <div>SDA-A, RX:0</div>
-                <div className="flex gap-1">
-                    <button className=" bg-[#3A1F23] text-[#E2A4AB]">RF</button>
-                    <button className=" bg-[#3A1F23] text-[#E2A4AB]">WP</button>
+	return (
+		<div className="box-border max-h-[40%] w-full rounded-3xl bg-secondary-soft p-2">
+			<div className={`flex justify-between gap-2 text-primary-foreground ${!isOpen ? "divide-x divide-x-reverse divide-secondary-soft" : ""}`}>
+				<div className="flex">
+					<button onClick={() => setIsOpen(!isOpen)} className="pd-0" ><ArrowTopSvg className={`transition-all ${isOpen ? "rotate-180" : ""}`} /></button>
+					<div className="">
+						<h2 className=" text-h3 text-primary-foreground">{t("TopLeftAlertMenu.IssuesInConnectedDevices.Title")}</h2>
+						{!isOpen && <div className=" text-sm text-issue">{3}{" "}{t("TopLeftAlertMenu.IssuesInConnectedDevices.IssuesNumber")}</div>}
+					</div>
+				</div>
+				{isOpen ?
+					<button className="grid place-content-center p-1 text-center">
+						<div className=" rounded-3xl bg-secondary-soft p-1 text-center text-md text-primary-foreground">{t("TopLeftAlertMenu.IssuesInConnectedDevices.ShowAll")}</div>
+					</button> : <div className="p-1 text-center"><OpenArrowsSvg /></div>}
+			</div>
+			{/* TODO: add transition to the elements */}
+			{isOpen &&
+                <div className="scrollbar secondary box-border flex h-full animate-open-menu flex-col gap-2 overflow-y-auto p-2">
+                	<div className="flex items-center justify-between rounded-3xl bg-gradient-to-r from-gradient-from from-0% to-gradient-to to-100% px-2 py-1">
+                		<div>SDA-A, RX:0</div>
+                		<div className="flex gap-1">
+                			<button className=" rounded-3xl bg-issue-foreground px-1 text-primary-foreground">RF</button>
+                			<button className=" rounded-3xl bg-issue-foreground px-1 text-primary-foreground">WP</button>
+                		</div>
+                	</div>
+                	<div className="flex items-center justify-between rounded-3xl bg-gradient-to-r from-gradient-from from-0% to-gradient-to to-100% px-2 py-1">
+                		<div>שם אמצעי</div>
+                		<div className="flex gap-1">
+                			<button className=" rounded-3xl bg-issue-foreground px-1 text-primary-foreground">ER</button>
+                			<button className=" rounded-3xl bg-issue-foreground px-1 text-primary-foreground">QT</button>
+                		</div>
+                	</div>
+                	<div className="flex items-center justify-between rounded-3xl bg-gradient-to-r from-gradient-from from-0% to-gradient-to to-100% px-2 py-1">
+                		<div>אמצעי מיוחד</div>
+                		<div className="flex gap-1">
+                			<button className=" rounded-3xl bg-issue-foreground px-1 text-primary-foreground">SHA</button>
+                			<button className=" rounded-3xl bg-issue-foreground px-1 text-primary-foreground">KED</button>
+                		</div>
+                	</div>
                 </div>
-            </div>
-            <div className="flex justify-between bg-[#363636] px-2 py-1 items-center rounded">
-                <div>שם אמצעי</div>
-                <div className="flex gap-1">
-                    <button className=" bg-[#3A1F23] text-[#E2A4AB]">ER</button>
-                    <button className=" bg-[#3A1F23] text-[#E2A4AB]">QT</button>
-                </div>
-            </div>
-            <div className="flex justify-between bg-[#363636] px-2 py-1 items-center rounded">
-                <div>אמצעי מיוחד</div>
-                <div className="flex gap-1">
-                    <button className=" bg-[#3A1F23] text-[#E2A4AB]">SHA</button>
-                    <button className=" bg-[#3A1F23] text-[#E2A4AB]">KED</button>
-                </div>
-            </div>
-        </div> : <></>}
-    </div>
+			}
+		</div>
+	);
 }
-

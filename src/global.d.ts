@@ -1,1 +1,1 @@
-declare module 'cesium';
+declare module "cesium";

@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-export interface IconPropsI {
-    className?: string;
-    style?: React.CSSProperties;
-    onClick?: () => void;
+export interface SvgIconPropsI {
+	className?: string;
+	style?: React.CSSProperties;
+	onClick?: () => void;
 }

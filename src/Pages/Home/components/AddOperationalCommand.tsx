@@ -1,5 +1,8 @@
-import { FormProvider, useFieldArray, useForm } from "react-hook-form";
+import moment from "moment";
+import { useState } from "react";
+import { FormProvider, useFieldArray, useForm, useFormContext } from "react-hook-form";
 import { z } from "zod";
+import { DATE_FORMAT, TIME_FORMAT } from "../../../utils/const";
 
 export const AddOperationalCommandFormStepOneZod = z.object({
     commandName: z.string().min(1),
@@ -109,10 +112,6 @@ export function AddOperationalCommand() {
     </FormProvider>
 
 }
-import { useFormContext } from "react-hook-form";
-import { useState } from "react";
-import moment from "moment";
-import { DATE_FORMAT, TIME_FORMAT } from "../../../utils/const";
 
 interface FormStepsProps {
     nextStep: () => void;

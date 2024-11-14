@@ -1,1 +1,1 @@
-declare module 'vite-plugin-cesium';
+declare module "vite-plugin-cesium";

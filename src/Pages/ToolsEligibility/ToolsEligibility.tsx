@@ -229,7 +229,8 @@ export function TracksList() {
 	const {t} = useTranslation()
 	const set_track_selected = useSetAtom(TrackSelectedAtom)
 	return <div className="grid grid-cols-4 gap-4 pt-4 px-2">
-		{tracks_hooks.query.data?.map((row) => <div key={row.id} className="rounded-lg w-full text-primary-foreground bg-[#CADFFF26] shadow-[0px_0px_8.8px_4px_rgba(0,0,0,0.07)]">
+		
+		{tracks_hooks.query.data?.map((row) => <div key={row.id} className="rounded-lg w-full text-primary-foreground bg-secondary-soft shadow-[0px_0px_8.8px_4px_rgba(0,0,0,0.07)]">
 			<div className={`flex justify-between ${row.status}Gradient rounded-lg px-2 font-bold text-md items-center`}>
 				<div>
 					{t('active')} ({row.pmName})
@@ -247,7 +248,7 @@ export function TracksList() {
 					{t('NE')}: {row.coordinate.N},{row.coordinate.E}
 				</div>
 				<div className="">
-					{row.devices.map((device) => <div key={device.id} className="flex justify-between items-center py-1 border-b border-b-[#CADFFF26]">
+					{row.devices.map((device) => <div key={device.id} className="flex justify-between items-center py-1 border-b border-b-secondary-soft">
 						<div>
 							{device.name}
 						</div>
@@ -270,11 +271,30 @@ import { useTranslation } from "react-i18next";
 export function InspectRoute() {
 	const track_details = useAtomValue(TrackDetailsAtom)
 	const set_track_selected = useSetAtom(TrackSelectedAtom)
-
+	const {t} = useTranslation()
 	if (track_details.data === null || track_details.data === undefined) return <div>
 		This is not supposed to be open
 	</div>
 	return <div>
+		<BottomDialog open={true} onClose={() => {} } >
+			<div className="h-[50vh] bg-primary">
+				<div className=" bg-secondary-soft text-primary-foreground">
+					<div className="flex justify-between p-2 ">
+						<div className="flex gap-4">
+							<div className=" bg-secondary-soft text-primary-foreground min-w-64 rounded-lg px-2">
+								{track_details.data.name} 
+							</div>
+							<div className="font-bold">
+								{t('NE')} {track_details.data.coordinate.N},{track_details.data.coordinate.E}
+							</div>
+						</div>
+						<div>
+							<button type="button" onClick={() => set_track_selected(null)} className="bg-secondary-soft rounded"><XSvg className=" " /></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</BottomDialog>
 		<div className="flex gap-4">
 			<div>
 				{track_details.data?.name} {track_details.data?.id}
@@ -312,4 +332,35 @@ export function InspectRoute() {
 			</div>
 		</div>)}
 	</div>
+}
+
+
+import React from 'react';
+import { XSvg } from "../../components/Icons/XSvg";
+
+interface Props {
+  children: React.ReactNode;
+  open: boolean;
+  onClose: () => void;
+}
+
+export function BottomDialog(props: Props) {
+  return (
+    <div
+      className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${
+        props.open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      } flex justify-center items-end`}
+      onClick={props.onClose}
+    >
+      <div
+        className={`bg-white w-full max-h-[80%] rounded-t-lg shadow-lg transform transition-transform duration-300 ${
+			props.open ? 'translate-y-0' : 'translate-y-full'
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+
+        {props.children}
+      </div>
+    </div>
+  );
 }

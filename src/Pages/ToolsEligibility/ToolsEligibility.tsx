@@ -48,7 +48,7 @@ export const TracksListZod = z.array(TrackZod)
 export function useTracksListHook() {
 	const query = useQuery({
 		queryKey: ['tracks'],
-		queryFn: () => {
+		queryFn: async () => {
 			// TODO: add an actual call for the api
 			const dto = [{
 				id: 1,
@@ -211,6 +211,7 @@ export function useTracksListHook() {
 				]
 			},
 			]
+			// const {err , data} = await httpCaller('GET', '/tracks', undefined, TracksListZod)
 			const zod_res = TracksListZod.safeParse(dto)
 			if (zod_res.success) return zod_res.data;
 			// TODO: if there is an error please raise a toast ir send a message to the user
@@ -355,6 +356,7 @@ export function InspectRoute() {
 
 import React from 'react';
 import { XSvg } from "../../components/Icons/XSvg";
+import { httpCaller } from "../../utils/httpCaller";
 
 interface Props {
 	children: React.ReactNode;
@@ -380,3 +382,7 @@ export function BottomDialog(props: Props) {
 		</div>
 	);
 }
+
+
+
+

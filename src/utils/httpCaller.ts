@@ -1,4 +1,5 @@
 import { z, ZodType } from 'zod';
+import { BASE_URL } from './const';
 
 export async function httpCaller<T>(
   method: 'GET' | 'POST' | 'DELETE' | 'PUT',
@@ -7,7 +8,7 @@ export async function httpCaller<T>(
   schema?: ZodType<T>
 ): Promise<{ err: z.ZodError<T> | string | null; data: T | null }> {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`${BASE_URL}${url}`, {
       method,
       headers: {
         'Content-Type': 'application/json',

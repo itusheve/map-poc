@@ -120,3 +120,5 @@ export const MENU_LIST = [
 
 export const DATE_FORMAT = 'DD/MM/YYYY' as const;
 export const TIME_FORMAT = 'HH:mm' as const;
+
+export const BASE_URL = 'https://api.example.com/' as const;

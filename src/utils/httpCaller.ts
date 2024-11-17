@@ -6,7 +6,7 @@ export async function httpCaller<T>(
   url: string,
   data?: any,
   schema?: ZodType<T>
-): Promise<{ err: z.ZodError<T> | string | null; data: T | null }> {
+): Promise<{ err: z.ZodError<T> | string; data: null } | {data: T , err : null }> {
   try {
     const response = await fetch(`${BASE_URL}${url}`, {
       method,
@@ -48,4 +48,7 @@ export async function t() {
     const { err, data } = await httpCaller('GET', 'https://api.example.com/user/1', undefined, userSchema);
     console.log(data); // { id: 1, name: 'John' }
     console.log(err); // null
+    if (data) {
+        err
+    }
 }

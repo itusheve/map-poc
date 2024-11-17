@@ -347,17 +347,7 @@ export function InspectRoute() {
 				</div>
 			</div>
 		</BottomDialog>
-		<div className="flex gap-4">
-			<div>
-				{track_details.data?.name} {track_details.data?.id}
-			</div>
-			<div>
-				N: {track_details.data?.coordinate.N} E: {track_details.data?.coordinate.E}
-			</div>
-			<button type="button" onClick={() => set_track_selected(null)}>
-				close
-			</button>
-		</div>
+		
 
 	</div>
 }

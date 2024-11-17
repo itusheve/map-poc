@@ -356,7 +356,6 @@ export function InspectRoute() {
 
 import React from 'react';
 import { XSvg } from "../../components/Icons/XSvg";
-import { httpCaller } from "../../utils/httpCaller";
 
 interface Props {
 	children: React.ReactNode;
